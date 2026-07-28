@@ -1,5 +1,30 @@
+html, body
+{
+	height:100%;
+	margin:0px;
+	
+	background-color:rgb(0,0,0);
+}
+
+p, h1, a, h3
+{
+	font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace';
+	margin:0px 0px;
+	
+	text-decoration: none;
+}
+
+#content {
+    width:50%;
+    background-color: aquamarine;
+}
+
 #box {
     color:red;
-    background-color: aquamarine;
-    width: 30%;
+    width: 25%;
+    display: table-cell;
+}
+
+.row {
+    
 }

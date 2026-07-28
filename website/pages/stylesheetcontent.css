@@ -1,0 +1,186 @@
+html, body
+{
+	height:100%;
+	margin:0px;
+	
+	text-align: center;
+	
+	background-image:linear-gradient(rgb(0,0,0), rgb(15,15,20));
+	background-position: center;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+	background-attachment: fixed;
+}
+
+p, h1, a, h2, h3, li
+{
+	font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace';
+	margin:0px;
+	
+	text-decoration: none;
+}
+
+h1
+{
+	font-size:4em;
+	color:white;
+	margin-bottom: 25px;
+}
+
+h2
+{
+	font-size:3em;
+	color:white;
+}
+
+h3
+{
+	font-size:2em;
+	color:darkgray;
+	margin:20px;
+}
+
+p, li
+{
+	color:rgba(255, 255, 255, 0.6);
+}
+
+#Content
+{
+	width:70%;
+	min-width:440px;
+	min-height:100%;
+	margin:auto;
+	padding:25px 0px;
+}
+
+#Section
+{
+	position:relative;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+#MediaInfo
+{
+    flex: 40%;
+	max-width:40%;
+}
+
+#MediaContent
+{	
+    flex: 60%;
+	max-width:60%;
+}
+
+#ModInfo
+{
+    flex: 85%;
+	max-width:85%;
+	height:100%;
+}
+
+#ModContent
+{	
+    flex: 15%;
+	max-width:15%;
+}
+
+@media screen and (max-width : 1300px )
+{
+	#MediaInfo 
+	{
+		flex: 100%;
+		max-width: 100%;
+	}
+	#MediaContent
+	{
+		flex: 100%;
+		max-width: 100%;
+	}
+}
+@media screen and (max-width : 1050px )
+{
+	#ModInfo 
+	{
+		flex: 100%;
+		max-width: 100%;
+	}
+	#ModContent
+	{
+		flex: 100%;
+		max-width: 100%;
+	}
+}
+#Panel
+{
+    flex-wrap: wrap;
+	display:flex;
+	position:relative;
+	
+	text-align: justify;
+	
+	margin:0px 5px 10px;
+	padding:10px;
+
+	background-color:rgb(204,204,255,0.15);
+}
+
+video, source
+{
+	width:100%;
+	margin:0;
+	padding:0;
+}
+
+#YearText
+{
+	position:absolute;
+	right:0;
+	top:0;
+}
+
+#Panel img
+{
+	width:100%;
+	margin:auto;
+}
+
+.Button
+{
+	width:15%;
+	min-width:100px; 
+	padding:10px;
+	margin:25px auto 50px;
+	
+	display:inline-block;
+	
+	background-color: slategray;
+	
+    transition: 0.3s ease;
+}
+
+.ModButton
+{	
+	width:100%;
+
+	display:inline-block;
+	
+	background-color: slategray;
+	
+    transition: 0.3s ease;
+}
+
+.Button:hover
+{
+	width:20%;
+	min-width:133px; 
+	filter:brightness(1.5);
+}
+
+.Button h3, .ModButton h3
+{
+	font-size:1.2em;
+	color:white;
+	margin:0px 0px;
+}
