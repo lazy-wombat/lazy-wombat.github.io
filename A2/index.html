@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="content">
+        <div class="row">
+            <div id="box">
+                <h1>Water Feature</h1>
+                <p id="fakelink">Foots</p> <!-- Including a link to the author's homepage allows access to more of their content. A significant portion of listeners may want to explore more of their work, find them on other social media platforms, or simply follow or contact them. -->
+                <br>
+                <audio src="audio/1.mp3" id="bounceAudio" controls></audio>
+                <br>
+                <br>
+                <h2 id="fakelink">Buy Digital Album</h2> <!-- Including a link to purchase the album allows passionate listeners to obtain the music in higher quality, support the author, or both. Giving users a clear means to support your work builds a side income and stronger community.-->
+                <br>
+                <p><button onclick="playAudio (1)">1. He's</button></p>
+                <p><button onclick="playAudio (2)">2. Dry Down (ft. Ben Snaath)</button></p>
+                <p><button onclick="playAudio (3)">3. Leapt</button></p>
+                <p><button onclick="playAudio (4)">4. Water Feature</button></p>
+                <br>
+                <p>© all rights reserved</p>
+            </div>
+            <div id="box">
+                <img src="images/cover.jpg"></img>
+                <ul>
+                <li>more music access</li>
+                <li>merchandise</li>
+                <li>colour control</li>
+                </ul> 
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function playAudio (trackNumber) {
+
+        // grab the audio element
+        const audio = document.getElementById ('bounceAudio')
+
+        // set the source to be the track number
+        // that was passed in
+        audio.src = `audio/${ trackNumber - 1 }.mp3`
+
+        // when the audio starts loading, play it
+        audio.onloadstart = () => audio.play ()
+    }
+</script>
+
+</html>

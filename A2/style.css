@@ -1,0 +1,61 @@
+html, body
+{  
+	margin:0px; /* All this does is make the content section connect seamlessly to the top and bottom of the webpage, resulting in a cleaner aesthetic. */
+	background-color:rgb(25,25,27); /* I design most of my interfaces with a dark theme because it's easier on the eyes and, for that reason, generally associated with more modern, UX-focused web design. */
+}
+
+p, h1, a, h2, h3, button
+{
+	font-family: 'Arial', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace';
+	
+    color:rgba(255,255,255,0.5);
+
+    margin:0px 0px;
+    text-align: justify; /* This gives the text bodies flat edges on both sides so they appear visually cleaner. */
+}
+
+li
+{
+	font-family: 'Arial', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace';
+}
+
+hr
+{
+    border: 1px solid rgba(255,255,255,0.15); /* Making the horizontal rulers darker than the text means that users will spend less cognitive energy trying to tell them apart.*/
+}
+
+button{
+    background-color: rgba(230,230,255,0);
+}
+
+button{
+    width: 100%;
+    border:none;
+    padding:6px;
+}
+
+button:hover, #fakelink:hover {
+    color:rgba(255,255,255,1);
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration: underline;
+}
+
+#content {
+    background-color:rgb(30,30,32);
+    width:600px;
+    max-width: 100%;
+	margin:auto;
+    padding:25px;
+}
+
+#box {
+    color:rgba(255,255,255,0.5); /* To make an interface easy on the viewer's eyes, not only should brightness be controlled, but also contrast. If the colour of text is too similar or different to that of the background, then it causes eye strain while trying to read it. */
+    /* background-color: rgba(230,230,255,0.05); */
+    width: 50%;
+    padding:15px;
+    display: table-cell; /* This allows the answer boxes to appear in a grid, making the information more compact and organised. */
+    outline-style:solid;
+    outline-color: rgb(30, 30, 33); /* The outline colour is the same as the background to give the illusion of spacing. */
+    outline-width: 3px; /* Including spacing between the answer boxes helps viewers to identify them discretely. */
+}
