@@ -1,7 +1,7 @@
 html, body
 {  
-	margin:0px; /* All this does is make the content section connect seamlessly to the top and bottom of the webpage, resulting in a cleaner aesthetic. */
-	background-color:rgb(0,0,0); /* I design most of my interfaces with a dark theme because it's easier on the eyes and, for that reason, generally associated with more modern, UX-focused web design. */
+	margin:0px;
+	background-color:rgb(0,0,0);
 }
 
 p, h1, a, h2, h3, button
@@ -11,17 +11,12 @@ p, h1, a, h2, h3, button
     color:rgba(255,255,255,0.5);
 
     margin:0px 0px;
-    text-align: justify; /* This gives the text bodies flat edges on both sides so they appear visually cleaner. */
+    text-align: justify;
 }
 
 li
 {
 	font-family: 'Arial', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace';
-}
-
-hr
-{
-    border: 1px solid rgba(255,255,255,0.15); /* Making the horizontal rulers darker than the text means that users will spend less cognitive energy trying to tell them apart.*/
 }
 
 button{
@@ -52,40 +47,43 @@ button:hover {
 }
 
 #row {
-    padding-top:3px;
-    padding-bottom:3px;
+    margin-top:1px;
+    margin-bottom:1px;
     width:100%;
 }
 
-#box, #album-image, #album-desc {
-    color:rgba(255,255,255,0.5); /* To make an interface easy on the viewer's eyes, not only should brightness be controlled, but also contrast. If the colour of text is too similar or different to that of the background, then it causes eye strain while trying to read it. */
+#box, #column, #album-cover, #album-details {
+    color:rgba(255,255,255,0.5);
     background-color: rgba(26,26,28);
-  
-    width:480px;
 
-    padding:0px;
+    width:100%;
+    align-content:flex-start;
 
-    display: table-cell; /* This allows the answer boxes to appear in a grid, making the information more compact and organised. */
+    display: table-cell;
     outline-style:solid;
-    outline-color: rgb(15,15,16); /* The outline colour is the same as the background to give the illusion of spacing. */
-    outline-width: 3px; /* Including spacing between the answer boxes helps viewers to identify them discretely. */
+    outline-color: rgb(15,15,16);
+    outline-width: 3px;
 }
 
-#padding {
+#column { /* Added separately since only one section of the website uses doubled columns. */
+    width:480px;
+}
+
+#padding { /* Added separately to improve workflow with album covers that shouldn't be affected by padding. */
     padding:15px;
 } 
 
-#album-image {
+#album-cover {
     width:192px;
     margin:auto;
 }
 
-#album-image img {
+#album-cover img {
     width:100%;
     align-self: center;
 }
 
-#album-desc {
+#album-details { 
     width:80%;
     align-content: center;
 }

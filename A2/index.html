@@ -8,14 +8,14 @@
 </head>
 <body>
     <div id="content">
-        <div id="row">
-            <div id="album-image">
+        <div id="row"> <!-- Include the album cover, title and author as immediate information to quickly communicate to the user who and what they are listening to. -->
+            <div id="album-cover">
                 <img src="images/cover.jpg"></img>
             </div>
-            <div id="album-desc">
+            <div id="album-details">
                 <div id="padding">
                     <h1>Water Feature EP</h1>
-                    <a>By </a><a id="fakelink">Foots</a> <!-- Including a link to the author's homepage allows easy access to more of their content. A significant portion of listeners may want to explore more of their work, find them on other social media platforms, buy their merchandise, or simply follow or contact them. By grouping all of these potential interactions within a single link, the webpage as a whole is much more streamlined. -->
+                    <a>By </a><a id="fakelink">Foots</a> <!-- Including a link to the author's homepage allows easy access to more of their content. A significant portion of listeners may want to explore more of their work, find them on other social media platforms, buy their merchandise, or simply follow or contact them. By grouping all of these potential interactions within a single link, the navigation of the website is much more streamlined. -->
                 </div>
             </div>
         </div>
@@ -23,9 +23,9 @@
             <audio src="audio/0.mp3" id="bounceAudio" controls></audio>
         </div>
         <div id="row">
-            <div id="box">
+            <div id="column">
                 <div id="padding">
-                    <h2>Tracklist</h2>
+                    <h2>Tracklist</h2> <!-- The ability to click tracks to play them significantly improves navigation, and also allows selection of certain tracks based on preference. -->
                     <br>
                     <p><button onclick="playAudio (1)">1. He's</button></p>
                     <p><button onclick="playAudio (2)">2. Dry Down (ft. Ben Snaath)</button></p>
@@ -39,19 +39,17 @@
                     <p>© All Rights Reserved</p>
                 </div>
             </div>
-            <div id="box">
+            <div id="column">
                 <div id="padding">
-                    <ul>
-                    <li>colour control</li>
-                    </ul> 
+                    <h2>Comments</h2> <!-- A means of social interaction is a way for users to engage with the author and each other, providing more opportinities for a stronger community. -->
                 </div>
             </div>
         </div>
         <div id="row">
             <br>
-            <p>You might also like:</p>
+            <p style="color:rgba(255, 255, 255, 0.25)">You might also like:</p> <!-- Album recommendations is an additional resource for users to discover new music and potentially broaden their taste. -->
             <br>
-            <div id="album-image">
+            <div id="album-cover">
                 <img src="images/cover_blank.jpg" id="fakelink"></img>
 
                 <div id="padding">
@@ -59,7 +57,7 @@
                     <a>By </a><a id="fakelink">Author</a>
                 </div>
             </div>
-            <div id="album-image">
+            <div id="album-cover">
                 <img src="images/cover_blank.jpg" id="fakelink"></img>
 
                 <div id="padding">
@@ -67,7 +65,7 @@
                     <a>By </a><a id="fakelink">Author</a>
                 </div>
             </div>
-            <div id="album-image">
+            <div id="album-cover">
                 <img src="images/cover_blank.jpg" id="fakelink"></img>
 
                 <div id="padding">
@@ -75,7 +73,7 @@
                     <a>By </a><a id="fakelink">Author</a>
                 </div>
             </div>
-            <div id="album-image">
+            <div id="album-cover">
                 <img src="images/cover_blank.jpg" id="fakelink"></img>
 
                 <div id="padding">
@@ -83,7 +81,7 @@
                     <a>By </a><a id="fakelink">Author</a>
                 </div>
             </div>
-            <div id="album-image">
+            <div id="album-cover">
                 <img src="images/cover_blank.jpg" id="fakelink"></img>
 
                 <div id="padding">
@@ -110,7 +108,7 @@
     audio.addEventListener('ended', playNextTrack); // This allows the full sequence of tracks to play automatically without human intervention, which is espeically useful for long periods of focus when distractions should be minimised.
 
     function playNextTrack() {
-        if (currentTrack < 4) {
+        if (currentTrack < 4) { // Stops at the final track, since there are none left to autoplay
             playAudio(currentTrack + 1);
         }
     }
