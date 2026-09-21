@@ -8,47 +8,111 @@
 </head>
 <body>
     <div id="content">
-        <div class="row">
+        <div id="row">
+            <div id="album-image">
+                <img src="images/cover.jpg"></img>
+            </div>
+            <div id="album-desc">
+                <div id="padding">
+                    <h1>Water Feature EP</h1>
+                    <a>By </a><a id="fakelink">Foots</a> <!-- Including a link to the author's homepage allows easy access to more of their content. A significant portion of listeners may want to explore more of their work, find them on other social media platforms, buy their merchandise, or simply follow or contact them. By grouping all of these potential interactions within a single link, the webpage as a whole is much more streamlined. -->
+                </div>
+            </div>
+        </div>
+        <div id="row">
+            <audio src="audio/0.mp3" id="bounceAudio" controls></audio>
+        </div>
+        <div id="row">
             <div id="box">
-                <h1>Water Feature</h1>
-                <p id="fakelink">Foots</p> <!-- Including a link to the author's homepage allows access to more of their content. A significant portion of listeners may want to explore more of their work, find them on other social media platforms, or simply follow or contact them. -->
-                <br>
-                <audio src="audio/1.mp3" id="bounceAudio" controls></audio>
-                <br>
-                <br>
-                <h2 id="fakelink">Buy Digital Album</h2> <!-- Including a link to purchase the album allows passionate listeners to obtain the music in higher quality, support the author, or both. Giving users a clear means to support your work builds a side income and stronger community.-->
-                <br>
-                <p><button onclick="playAudio (1)">1. He's</button></p>
-                <p><button onclick="playAudio (2)">2. Dry Down (ft. Ben Snaath)</button></p>
-                <p><button onclick="playAudio (3)">3. Leapt</button></p>
-                <p><button onclick="playAudio (4)">4. Water Feature</button></p>
-                <br>
-                <p>© all rights reserved</p>
+                <div id="padding">
+                    <h2>Tracklist</h2>
+                    <br>
+                    <p><button onclick="playAudio (1)">1. He's</button></p>
+                    <p><button onclick="playAudio (2)">2. Dry Down (ft. Ben Snaath)</button></p>
+                    <p><button onclick="playAudio (3)">3. Leapt</button></p>
+                    <p><button onclick="playAudio (4)">4. Water Feature</button></p>
+                    <br>
+                    <p>Released October 18, 2014</p>
+                    <br>
+                    <h3 id="fakelink">Buy Digital Album</h3> <!-- Including a link to purchase the album allows passionate listeners to obtain the music in higher quality, support the author, or both. Giving users a clear means to support your work builds both a side income and stronger community.-->
+                    <br>
+                    <p>© All Rights Reserved</p>
+                </div>
             </div>
             <div id="box">
-                <img src="images/cover.jpg"></img>
-                <ul>
-                <li>more music access</li>
-                <li>merchandise</li>
-                <li>colour control</li>
-                </ul> 
+                <div id="padding">
+                    <ul>
+                    <li>colour control</li>
+                    </ul> 
+                </div>
+            </div>
+        </div>
+        <div id="row">
+            <br>
+            <p>You might also like:</p>
+            <br>
+            <div id="album-image">
+                <img src="images/cover_blank.jpg" id="fakelink"></img>
+
+                <div id="padding">
+                    <p id="fakelink">Album Title</p>
+                    <a>By </a><a id="fakelink">Author</a>
+                </div>
+            </div>
+            <div id="album-image">
+                <img src="images/cover_blank.jpg" id="fakelink"></img>
+
+                <div id="padding">
+                    <p id="fakelink">Album Title</p>
+                    <a>By </a><a id="fakelink">Author</a>
+                </div>
+            </div>
+            <div id="album-image">
+                <img src="images/cover_blank.jpg" id="fakelink"></img>
+
+                <div id="padding">
+                    <p id="fakelink">Album Title</p>
+                    <a>By </a><a id="fakelink">Author</a>
+                </div>
+            </div>
+            <div id="album-image">
+                <img src="images/cover_blank.jpg" id="fakelink"></img>
+
+                <div id="padding">
+                    <p id="fakelink">Album Title</p>
+                    <a>By </a><a id="fakelink">Author</a>
+                </div>
+            </div>
+            <div id="album-image">
+                <img src="images/cover_blank.jpg" id="fakelink"></img>
+
+                <div id="padding">
+                    <p id="fakelink">Album Title</p>
+                    <a>By </a><a id="fakelink">Author</a>
+                </div>
             </div>
         </div>
     </div>
 </body>
 
 <script>
-    function playAudio (trackNumber) {
+    const audio = document.getElementById('bounceAudio');
+    let currentTrack = 1;
 
-        // grab the audio element
-        const audio = document.getElementById ('bounceAudio')
+    function playAudio(trackNumber) {
+        currentTrack = trackNumber;
 
-        // set the source to be the track number
-        // that was passed in
-        audio.src = `audio/${ trackNumber - 1 }.mp3`
+        audio.src = `audio/${trackNumber - 1}.mp3`;
 
-        // when the audio starts loading, play it
-        audio.onloadstart = () => audio.play ()
+        audio.onloadstart = () => audio.play();
+    }
+
+    audio.addEventListener('ended', playNextTrack); // This allows the full sequence of tracks to play automatically without human intervention, which is espeically useful for long periods of focus when distractions should be minimised.
+
+    function playNextTrack() {
+        if (currentTrack < 4) {
+            playAudio(currentTrack + 1);
+        }
     }
 </script>
 
