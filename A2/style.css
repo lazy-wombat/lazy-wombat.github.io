@@ -16,6 +16,10 @@
     --color-text-hover: rgb(0,0,0);
 }
 
+.color-picker > fieldset {
+    border:0;
+}
+
 html, body
 {  
 	margin:0px;
@@ -47,7 +51,7 @@ button{
     padding:6px;
 }
 
-button:hover, #fakelink:hover {
+button:hover, #fakelink:hover { /* Change the cursor and brighten the colours of clickable items hovered over to add visual feedback */
     color:var(--color-text-hover);
     font-weight:bold;
     cursor:pointer;
@@ -59,12 +63,12 @@ button:hover {
 
 #content {
     background-color:var(--color-content);
-    width:960px;
+    width:960px; /* Width is fixed so that the webpage doesn't warp with resizing */
 	margin:auto;
     padding:15px;
 }
 
-#row {
+#row { /* Used to divide things vertically while keeping them organised */
     margin-top:1px;
     margin-bottom:1px;
     width:100%;
@@ -87,7 +91,7 @@ button:hover {
     width:480px;
 }
 
-#padding { /* Added separately to improve workflow with album covers that shouldn't be affected by padding. */
+#padding { /* Container padding is added separately to improve workflow with album covers that shouldn't be affected by padding. */
     padding:15px;
 } 
 
@@ -103,5 +107,5 @@ button:hover {
 
 #album-details { 
     width:80%;
-    align-content: center;
+    align-content: flex-start;
 }

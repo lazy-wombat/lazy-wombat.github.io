@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action=""> <!-- This lets the user change the colour theme of the webpage to suit their visual preference. -->
-        <fieldset>
-            <legend>
-                <label for="theme">Dark</label>
-                <input type="radio" id="dark" name="theme" checked>
-
-                <label for="theme">Light</label>
-                <input type="radio" id="light" name="theme">
-            </legend>
-        </fieldset>
-    </form>
-
     <div id="content">
+        <form class="color-picker" action=""> <!-- This lets the user change the colour theme of the webpage to suit their visual preference. -->
+            <fieldset>
+                <legend>
+                    <input type="radio" id="dark" name="theme" checked>
+                    <label for="theme">Dark</label>
+
+                    <input type="radio" id="light" name="theme">
+                    <label for="theme">Light</label>
+                </legend>
+            </fieldset>
+        </form>
+
         <div id="row"> <!-- Include the album cover, title and author as immediate information to quickly communicate to the user who and what they are listening to. -->
             <div id="album-cover">
                 <img src="images/cover.jpg"></img>
@@ -28,6 +28,9 @@
                 <div id="padding">
                     <h1>Water Feature EP</h1>
                     <a>By </a><a id="fakelink">Foots</a> <!-- Including a link to the author's homepage allows easy access to more of their content. A significant portion of listeners may want to explore more of their work, find them on other social media platforms, buy their merchandise, or simply follow or contact them. By grouping all of these potential interactions within a single link, the navigation of the website is much more streamlined. -->
+                </div>
+                <div id="padding">
+                    <p>(Album description)</p>
                 </div>
             </div>
         </div>
@@ -53,7 +56,7 @@
             </div>
             <div id="column">
                 <div id="padding">
-                    <h2>Comments</h2> <!-- A means of social interaction is a way for users to engage with the author and each other, providing more opportinities for a stronger community. -->
+                    <h2>Comments</h2> <!-- A means of social interaction is a way for users to engage with the author and each other, providing more opportunities for a stronger community. -->
                 </div>
             </div>
         </div>
@@ -117,7 +120,7 @@
         audio.onloadstart = () => audio.play();
     }
 
-    audio.addEventListener('ended', playNextTrack); // This allows the full sequence of tracks to play automatically without human intervention, which is espeically useful for long periods of focus when distractions should be minimised.
+    audio.addEventListener('ended', playNextTrack); // This allows the full sequence of tracks to play automatically without human intervention, which is especially useful for long periods of focus when distractions should be minimised.
 
     function playNextTrack() {
         if (currentTrack < 4) { // Stops at the final track, since there are none left to autoplay
