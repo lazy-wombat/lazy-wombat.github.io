@@ -5,6 +5,7 @@
     --color-text: rgba(255,255,255,0.5);
     --color-text-subtle: rgba(255,255,255,0.25);
     --color-text-hover: rgb(255,255,255);
+    --color-button-hover: rgba(255,255,255,0.1);
 }
 
 :root:has(#light:checked) {
@@ -12,12 +13,15 @@
     --color-content: rgb(241,243,244);
     --color-box: rgb(255,255,255);
     --color-text: rgba(0,0,0,0.5);
-    --color-text-subtle: rgba(0,0,0,0.5);
+    --color-text-subtle: rgba(0,0,0,0.25);
     --color-text-hover: rgb(0,0,0);
+    --color-button-hover: rgba(0,0,0,0.1);
 }
 
 .color-picker > fieldset {
     border:0;
+    padding:0px;
+    font-weight:bold;
 }
 
 html, body
@@ -42,7 +46,7 @@ li
 }
 
 button{
-    background-color: rgba(230,230,255,0);
+    background-color: rgba(0,0,0,0);
 }
 
 button{
@@ -58,7 +62,7 @@ button:hover, #fakelink:hover { /* Change the cursor and brighten the colours of
 }
 
 button:hover {
-    background-color: rgba(230,230,255,0.05);
+    background-color: var(--color-button-hover);
 }
 
 #content {
@@ -74,11 +78,11 @@ button:hover {
     width:100%;
 }
 
-#box, #column, #album-cover, #album-details {
+#box, #column, #album-cover, #album-details, #searchbox {
     color:var(--color-text);
     background-color:var(--color-box);
 
-    width:100%;
+    width:960px;
     align-content:flex-start;
 
     display: table-cell;
@@ -87,8 +91,12 @@ button:hover {
     outline-width: 3px;
 }
 
-#column { /* Added separately since only one section of the website uses doubled columns. */
+#column, #searchbox { /* Column behaviour is added separately to improve workflow with different sections that don't always need it. */
     width:480px;
+}
+
+#searchbox:hover {
+    cursor:text;
 }
 
 #padding { /* Container padding is added separately to improve workflow with album covers that shouldn't be affected by padding. */

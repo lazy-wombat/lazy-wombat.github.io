@@ -8,17 +8,28 @@
 </head>
 <body>
     <div id="content">
-        <form class="color-picker" action=""> <!-- This lets the user change the colour theme of the webpage to suit their visual preference. -->
-            <fieldset>
-                <legend>
-                    <input type="radio" id="dark" name="theme" checked>
-                    <label for="theme">Dark</label>
+        <div id="row">
+            <div id="searchbox">
+                <div id="padding">
+                    <a style="color:var(--color-text-subtle)">Search for artist, album or track</a> <!-- Give the user more control over what music they wish to listen to by adding a direct search option. -->
+                </div>
+            </div>
+            <div id="column">
+                <div id="padding">
+                    <form class="color-picker" action=""> <!-- This lets the user change the colour theme of the webpage to suit their visual preference. -->
+                        <fieldset>
+                            <legend>
+                                <input type="radio" id="dark" name="theme" checked>
+                                <label for="theme">Dark</label>
 
-                    <input type="radio" id="light" name="theme">
-                    <label for="theme">Light</label>
-                </legend>
-            </fieldset>
-        </form>
+                                <input type="radio" id="light" name="theme">
+                                <label for="theme">Light</label>
+                            </legend>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <div id="row"> <!-- Include the album cover, title and author as immediate information to quickly communicate to the user who and what they are listening to. -->
             <div id="album-cover">
@@ -30,7 +41,7 @@
                     <a>By </a><a id="fakelink">Foots</a> <!-- Including a link to the author's homepage allows easy access to more of their content. A significant portion of listeners may want to explore more of their work, find them on other social media platforms, buy their merchandise, or simply follow or contact them. By grouping all of these potential interactions within a single link, the navigation of the website is much more streamlined. -->
                 </div>
                 <div id="padding">
-                    <p>(Album description)</p>
+                    <p>(Description)</p>
                 </div>
             </div>
         </div>
@@ -61,9 +72,11 @@
             </div>
         </div>
         <div id="row">
-            <br>
-            <p style="color:var(--color-text-subtle)">You might also like:</p> <!-- Album recommendations is an additional resource for users to discover new music and potentially broaden their taste. -->
-            <br>
+            <div id="padding">
+                <p style="color:var(--color-text-subtle)">You might also like:</p> <!-- Album recommendations is an additional resource for users to discover new music and potentially broaden their taste. -->
+            </div>
+        </div>
+        <div id="row">
             <div id="album-cover">
                 <img src="images/cover_blank.jpg" id="fakelink"></img>
 
