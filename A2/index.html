@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <form action=""> <!-- This lets the user change the colour theme of the webpage to suit their visual preference. -->
+        <fieldset>
+            <legend>
+                <label for="theme">Dark</label>
+                <input type="radio" id="dark" name="theme" checked>
+
+                <label for="theme">Light</label>
+                <input type="radio" id="light" name="theme">
+            </legend>
+        </fieldset>
+    </form>
+
     <div id="content">
         <div id="row"> <!-- Include the album cover, title and author as immediate information to quickly communicate to the user who and what they are listening to. -->
             <div id="album-cover">
@@ -47,7 +59,7 @@
         </div>
         <div id="row">
             <br>
-            <p style="color:rgba(255, 255, 255, 0.25)">You might also like:</p> <!-- Album recommendations is an additional resource for users to discover new music and potentially broaden their taste. -->
+            <p style="color:var(--color-text-subtle)">You might also like:</p> <!-- Album recommendations is an additional resource for users to discover new music and potentially broaden their taste. -->
             <br>
             <div id="album-cover">
                 <img src="images/cover_blank.jpg" id="fakelink"></img>

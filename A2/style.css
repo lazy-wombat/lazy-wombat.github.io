@@ -1,14 +1,32 @@
+:root {
+    --color-background: rgb(0,0,0); /* All webpage colours are based on variables to ensure compatibility with dynamic colour theming */
+    --color-content: rgb(15,15,16);
+    --color-box: rgb(26,26,28);
+    --color-text: rgba(255,255,255,0.5);
+    --color-text-subtle: rgba(255,255,255,0.25);
+    --color-text-hover: rgb(255,255,255);
+}
+
+:root:has(#light:checked) {
+    --color-background: rgb(225,228,230);
+    --color-content: rgb(241,243,244);
+    --color-box: rgb(255,255,255);
+    --color-text: rgba(0,0,0,0.5);
+    --color-text-subtle: rgba(0,0,0,0.5);
+    --color-text-hover: rgb(0,0,0);
+}
+
 html, body
 {  
 	margin:0px;
-	background-color:rgb(0,0,0);
+	background-color: var(--color-background);
 }
 
-p, h1, a, h2, h3, button
+p, h1, a, h2, h3, button, label
 {
 	font-family: 'Arial', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', 'monospace';
 	
-    color:rgba(255,255,255,0.5);
+    color:var(--color-text);
 
     margin:0px 0px;
     text-align: justify;
@@ -30,7 +48,7 @@ button{
 }
 
 button:hover, #fakelink:hover {
-    color:rgba(255,255,255,1);
+    color:var(--color-text-hover);
     font-weight:bold;
     cursor:pointer;
 }
@@ -40,7 +58,7 @@ button:hover {
 }
 
 #content {
-    background-color:rgb(15,15,16);
+    background-color:var(--color-content);
     width:960px;
 	margin:auto;
     padding:15px;
@@ -53,15 +71,15 @@ button:hover {
 }
 
 #box, #column, #album-cover, #album-details {
-    color:rgba(255,255,255,0.5);
-    background-color: rgba(26,26,28);
+    color:var(--color-text);
+    background-color:var(--color-box);
 
     width:100%;
     align-content:flex-start;
 
     display: table-cell;
     outline-style:solid;
-    outline-color: rgb(15,15,16);
+    outline-color: var(--color-content);
     outline-width: 3px;
 }
 
