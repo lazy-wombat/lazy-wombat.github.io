@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <canvas id="myCanvas"></canvas>
+    </body>
+
+<script>
+    document.body.style.margin = '0'
+    document.body.style.overflow = 'hidden'
+
+    const cnv = document.getElementById ('myCanvas')
+    const center = {}
+
+    function resizeCanvas () {
+        cnv.width = window.innerWidth
+        cnv.height = window.innerHeight
+        center.x = cnv.width / 2
+        center.y = cnv.height / 2
+    }
+
+    window.addEventListener ('resize', resizeCanvas)
+    resizeCanvas ()
+
+    const ctx = cnv.getContext ('2d') 
+
+    const menuRadius = 250;
+    var rotateY = 0;
+    const positions = []
+    var rotate = 0;
+    var rotateSpeed = 0;
+
+    var mouseX = 0
+    var mouseY = 0
+
+    function clamp (value, min, max)
+    {
+        return Math.min(Math.max(value, min), max)
+    }
+
+    function difference (value1, value2) {
+        return Math.abs(value1 - value2)
+    }
+
+    cnv.addEventListener ('mousemove', e => {
+        mouseX = e.clientX
+        mouseY = e.clientY
+    })
+
+    function drawCircle (posX, posY, rad, fill, stroke, strokeWidth) {
+        ctx.beginPath ()
+        ctx.arc (posX, posY, rad, 0, Math.PI * 2)
+        ctx.fillStyle = fill
+        ctx.strokeStyle = stroke
+        ctx.lineWidth = strokeWidth
+        ctx.fill ()
+        ctx.stroke()
+        ctx.closePath ()
+    }
+
+    function drawItem (posX, posY, rad, col) {
+        drawCircle(posX, posY, rad - 6, col, col)
+        drawCircle(posX, posY, rad - 1, "rgba(0, 0, 0, 0)", col, 2)
+    }
+
+    function distance (x1, y1, x2, y2) {
+        const dx = x2 - x1
+        const dy = y2 - y1
+        return Math.sqrt (dx * dx + dy * dy)
+    }
+
+    function addItem (longitude, latitude) {
+        var posX = center.x + Math.sin(rotateY + longitude) * menuRadius * Math.cos(latitude)
+        var posY = center.y + Math.sin(latitude) * menuRadius
+        var posZ = Math.cos(rotateY + longitude) * Math.cos(latitude)
+
+        var brightness = (posZ + 1) / 4
+
+        if (posZ > -0.0001 && distance(posX, posY, mouseX, mouseY) <= 50) {
+            brightness *= 2
+            document.body.style.cursor = "pointer";
+        }
+
+        drawItem(posX, posY, 50, "rgba(255, 255, 255," + brightness + ")")
+    }
+
+    function drawFrame () {
+        requestAnimationFrame (drawFrame)
+
+        document.body.style.cursor = "default";
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillRect (0, 0, cnv.width, cnv.height)
+
+        rotateSpeed = 1 - difference(menuRadius + 75, distance(mouseX, mouseY, center.x, center.y)) / 125
+        rotateSpeed = clamp(rotateSpeed, 0, 1)
+        if (mouseX > center.x) {
+            rotateSpeed *= -1
+        }
+        rotateSpeed *= Math.cos(clamp(difference(mouseY, center.y) / menuRadius, 0, 1) * Math.PI / 2)
+        
+        rotate += rotateSpeed / menuRadius
+
+        rotateY += rotate
+        rotate *= 0.9
+
+        for (let i = 0; i < 8; i++) {
+            addItem((Math.PI * i) / 4, 0)
+        }
+        for (let i = 0; i < 4; i++) {
+            addItem((Math.PI * i) / 2, Math.PI / 4)
+            addItem((Math.PI * i) / 2, -Math.PI / 4)
+        }
+        addItem(0, Math.PI / 2)
+        addItem(0, -Math.PI / 2)
+    }
+
+    requestAnimationFrame (drawFrame)
+</script>
+
+</html>
