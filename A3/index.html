@@ -34,8 +34,9 @@
         var rotateVelocity = 0;
         var rotateAcceleration = 0;
 
-        var mouseX = 0
-        var mouseY = 0
+        var mouseX;
+        var mouseY;
+        var distanceFromOuterRing;
 
         cnv.addEventListener ('mousemove', e => {
             mouseX = e.clientX
@@ -74,46 +75,48 @@
         }
 
         function rotateSphere () {
-            rotateAcceleration = 1.5 - difference(sphereRadius + 75, distance(mouseX, mouseY, center.x, center.y)) / 50
-            rotateAcceleration = clamp(rotateAcceleration, 0, 1)
-            rotateAcceleration *= Math.cos(clamp(difference(mouseY, center.y) / sphereRadius, 0, 1) * Math.PI / 2)
+            distanceFromOuterRing = difference(sphereRadius + 75, distance(mouseX, mouseY, center.x, center.y)); // The angular acceleration of the sphere depends on the distance of the mouse from a ring just outside the sphere interface. This way, the user can easily choose between selecting items or rotating the sphere.
+
+            rotateAcceleration = 1.5 - distanceFromOuterRing / 50 // The 1.5 value, after clamping on the next line, removes the need for pixel-perfect precision to achieve maximum rotation speed. Instead, it constitutes a larger portion of the ring and can be achieved more reliably. This also means that the maximum distance for non-zero acceleration is 75 pixels, which perfectly touches the edge of the sphere, rather than 50.
+            rotateAcceleration = clamp(rotateAcceleration, 0, 1) // Prevents negative acceleration that would cause the sphere to spin out of control and be unusable.
+            rotateAcceleration *= Math.cos(clamp(difference(mouseY, center.y) / sphereRadius, 0, 1) * Math.PI / 2) // Reduces the rotation speed further away from the left and right edges. This is the final step for ensuring the sphere only rotates when the user clearly intends to do so.
             
-            if (mouseX > center.x) {
+            if (mouseX > center.x) { // Makes sure each side rotates the sphere in a different direction.
                 rotateAcceleration *= -1
             }
 
-            rotateVelocity += rotateAcceleration / sphereRadius
+            rotateVelocity += rotateAcceleration / sphereRadius // Angular acceleration is applied to angular velocity
 
-            rotation += rotateVelocity
-            rotateVelocity *= 0.9
+            rotation += rotateVelocity // Angular velocity is applied to rotation
+            rotateVelocity *= 0.9 // Velocity with dampening is used so that the motion of the sphere feels smoother. Otherwise, it tends to feel choppy and abrupt.
         }
 
         function addItem (longitude, latitude) {
-            var posX = center.x + Math.sin(rotation + longitude) * sphereRadius * Math.cos(latitude)
+            var posX = center.x + Math.sin(rotation + longitude) * sphereRadius * Math.cos(latitude) // Calculations using sin and cos functions that determine the position for each item
             var posY = center.y + Math.sin(latitude) * sphereRadius
             var posZ = Math.cos(rotation + longitude) * Math.cos(latitude)
 
-            var alpha = (posZ + 1) / 4
+            var alpha = (posZ + 1) / 4 // A positive Z position equates to being closer to the viewer. Only the closer items are interactable, so they should be more visually apparent, while the ones behind should be darker.
 
-            if (posZ > -0.0001 && distance(posX, posY, mouseX, mouseY) <= 50) {
+            if (posZ > -0.0001 && distance(posX, posY, mouseX, mouseY) <= 50) { //When the user is hovering over this item, the brightness will be increased and the cursor changed to a pointer to make clear to the user that this is a clickable button.
                 alpha *= 2
                 document.body.style.cursor = "pointer";
             }
 
-            drawItem(posX, posY, 50, "rgba(255, 255, 255," + alpha + ")")
+            drawItem(posX, posY, 50, "rgba(255, 255, 255," + alpha + ")") //Draws the item in pure white with the dynamic transparency applied.
         }
 
         function drawFrame () {
             requestAnimationFrame (drawFrame)
 
-            document.body.style.cursor = "default";
+            document.body.style.cursor = "default"; // This refreshes the cursor visual to its default state, so it only becomes a pointer when actively hovering over an item.
 
-            ctx.fillStyle = "rgb(0, 0, 0)"
+            ctx.fillStyle = "rgb(0, 0, 0)" // This sets the backdrop of the website.
             ctx.fillRect (0, 0, cnv.width, cnv.height)
 
-            rotateSphere()
+            rotateSphere() // This updates the sphere's rotation based on the mouse position.
 
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 8; i++) { // All items are rendered each frame with specified latitude and longitude along the sphere.
                 addItem((Math.PI * i) / 4, 0)
             }
             for (let i = 0; i < 4; i++) {
